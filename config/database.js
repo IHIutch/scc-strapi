@@ -1,15 +1,22 @@
-module.exports = ({ env }) => ({
-  defaultConnection: 'default',
+const parse = require("pg-connection-string").parse;
+const config = parse(process.env.DATABASE_URL);
+module.exports = () => ({
+  defaultConnection: "default",
   connections: {
     default: {
-      connector: 'bookshelf',
+      connector: "bookshelf",
       settings: {
-        client: 'sqlite',
-        filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+        client: "postgres",
+        host: config.host || "localhost",
+        port: config.port || 5432,
+        database: config.database || "strapi",
+        username: config.user || "strapi",
+        password: config.password || "strapi",
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
-      options: {
-        useNullAsDefault: true,
-      },
+      options: {},
     },
   },
 });
