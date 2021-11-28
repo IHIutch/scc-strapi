@@ -1387,7 +1387,7 @@
   dependencies:
     cross-fetch "^3.1.0"
 
-"@supabase/supabase-js@^1.20.0":
+"@supabase/supabase-js@^1.28.2":
   version "1.28.2"
   resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.28.2.tgz#633603a66cf11a5e510cf646776298d1865ddc9c"
   integrity sha512-QJmnBV6iNcWJ2UI56KjUEXlZrcKlNXSaJBgXdq6Cl+CcyVSBv9Y+UbgqVWUMsuzu2HDD73aiYvO8FU1QLsmqZg==
@@ -9932,12 +9932,8 @@ strapi-provider-upload-local@3.6.8:
   resolved "https://registry.yarnpkg.com/strapi-provider-upload-local/-/strapi-provider-upload-local-3.6.8.tgz#4666269e96f2ae878f366ae091d09ea69fb0237b"
   integrity sha512-GkedrjO+T4DN649Ak0SMSS5Vdta0AoZRt9+IWLO9TGLZ7hjtIjnB60kGf0fQKspIhbS7DUqtwuzQAXTd8fXJOg==
 
-strapi-provider-upload-supabase@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/strapi-provider-upload-supabase/-/strapi-provider-upload-supabase-1.0.0.tgz#303d40bb6f8da4e25f206a766d1c668b61bb0f30"
-  integrity sha512-2TeN0PnjNw7ALijShhKDzcB8tTKvKbWqsU/v5sAsB0NEn4wYSDQXdQGSj7d+LnJSBZIgVIRrRRZvsY/BwHjEYQ==
-  dependencies:
-    "@supabase/supabase-js" "^1.20.0"
+"strapi-provider-upload-supabase@file:providers/strapi-provider-upload-supabase":
+  version "0.0.0"
 
 strapi-utils@3.6.8:
   version "3.6.8"

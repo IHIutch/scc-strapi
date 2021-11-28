@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@supabase/supabase-js": "^1.28.2",
     "knex": "0.21.18",
     "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
@@ -25,7 +26,7 @@
     "strapi-plugin-i18n": "3.6.8",
     "strapi-plugin-upload": "3.6.8",
     "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-provider-upload-supabase": "^1.0.0",
+    "strapi-provider-upload-supabase": "file:providers/strapi-provider-upload-supabase",
     "strapi-utils": "3.6.8"
   },
   "author": {
