@@ -1,5 +1,5 @@
 {
-  "name": "scc-strapi",
+  "name": "strapiv-4",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -16,28 +16,21 @@
     "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
     "slugify": "^1.6.3",
-    "sqlite3": "5.0.0",
-    "strapi": "3.6.8",
-    "strapi-admin": "3.6.8",
-    "strapi-connector-bookshelf": "3.6.8",
-    "strapi-plugin-content-manager": "3.6.8",
-    "strapi-plugin-content-type-builder": "3.6.8",
-    "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-i18n": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
-    "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-provider-upload-supabase": "file:providers/strapi-provider-upload-supabase",
-    "strapi-utils": "3.6.8"
+    "@strapi/strapi": "4.0.0",
+    "@strapi/plugin-users-permissions": "4.0.0",
+    "@strapi/plugin-i18n": "4.0.0",
+    "sqlite3": "5.0.2",
+    "strapi-provider-upload-supabase": "file:strapi-provider-upload-supabase"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "5834e4cb-4f60-40d2-9d2e-fed59622c3df"
+    "uuid": "cbc14233-8890-40f0-be3c-6196a0894b7a"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
-    "npm": "^6.0.0"
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
   },
   "license": "MIT"
 }

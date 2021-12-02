@@ -107,14 +107,8 @@ coverage
 ############################
 
 .env
-.env.local
-.env.development
-.env.production
 license.txt
 exports
 *.cache
 build
 .strapi-updater.json
-
-# Required For Heroku Deployment
-package-lock.json
