@@ -1784,7 +1784,7 @@
     lodash "4.17.21"
     yup "0.32.9"
 
-"@supabase/gotrue-js@^1.21.0":
+"@supabase/gotrue-js@^1.21.7":
   version "1.21.7"
   resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.21.7.tgz#ec3fdf2199a28fb65c1ae94a3c10032536c0aa4e"
   integrity sha512-YnL4cO3Q+ugatWEtgCEnLt+Wwi0VpOVTPSSjSSUho2x3cH7+juRBTrVbYky/W6YVgAw/ZJrVUFPh/NcUCUhdmw==
@@ -1798,7 +1798,7 @@
   dependencies:
     cross-fetch "^3.0.6"
 
-"@supabase/realtime-js@^1.2.1":
+"@supabase/realtime-js@^1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.3.2.tgz#c16914527529efcb47b3b8d6c6e39d3038b13b1e"
   integrity sha512-6U/2Ct0J8z9PIea5gOuTeGjMCwhZWL34hznwUaTjgDOkqKVheTKtvyrbTLJi04yXP4SLIVxju6egjOlA5cI0HQ==
@@ -1813,14 +1813,14 @@
   dependencies:
     cross-fetch "^3.1.0"
 
-"@supabase/supabase-js@^1.28.2":
-  version "1.28.2"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.28.2.tgz#633603a66cf11a5e510cf646776298d1865ddc9c"
-  integrity sha512-QJmnBV6iNcWJ2UI56KjUEXlZrcKlNXSaJBgXdq6Cl+CcyVSBv9Y+UbgqVWUMsuzu2HDD73aiYvO8FU1QLsmqZg==
+"@supabase/supabase-js@^1.28.4":
+  version "1.28.4"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.28.4.tgz#db27290c9b6adf829b92cb36548d14214e3671ef"
+  integrity sha512-Thp9NZTvNx/jLE1Excuqlj0vUZNJDULWO9Uj0EnHMzsQyCAydhXvpNPZlCtdRyS1xSn4/vYTWBefqNKesuXUbw==
   dependencies:
-    "@supabase/gotrue-js" "^1.21.0"
+    "@supabase/gotrue-js" "^1.21.7"
     "@supabase/postgrest-js" "^0.35.0"
-    "@supabase/realtime-js" "^1.2.1"
+    "@supabase/realtime-js" "^1.3.2"
     "@supabase/storage-js" "^1.5.0"
 
 "@szmarczak/http-timer@^4.0.5":
@@ -9534,8 +9534,10 @@ std-env@^2.2.1:
   dependencies:
     ci-info "^3.1.1"
 
-"strapi-provider-upload-supabase@file:strapi-provider-upload-supabase":
-  version "0.0.0"
+"strapi-provider-upload-supabase@file:providers/strapi-provider-upload-supabase":
+  version "1.0.0"
+  dependencies:
+    "@supabase/supabase-js" "^1.28.4"
 
 stream-browserify@^3.0.0:
   version "3.0.0"
