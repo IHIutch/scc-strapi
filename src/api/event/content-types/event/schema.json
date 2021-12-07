@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Slug": {
+    "slug": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "startingAt": {
       "type": "datetime"
