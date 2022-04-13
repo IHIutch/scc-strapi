@@ -19,6 +19,16 @@ module.exports = ({ env }) => ({
       slugifyWithCount: true,
     },
   },
+  seo: {
+    enabled: true,
+  },
+  sitemap: {
+    enabled: true,
+    config: {
+      autoGenerate: true,
+      allowedFields: ["id", "string"],
+    },
+  },
   upload: {
     config: {
       provider: "strapi-provider-upload-supabase",
