@@ -1,4 +1,24 @@
 module.exports = ({ env }) => ({
+  slugify: {
+    enabled: true,
+    config: {
+      contentTypes: {
+        post: {
+          field: "slug",
+          references: "title",
+        },
+        event: {
+          field: "slug",
+          references: "title",
+        },
+      },
+      slugifyOptions: {
+        lower: true,
+        strict: true,
+      },
+      slugifyWithCount: true,
+    },
+  },
   upload: {
     config: {
       provider: "strapi-provider-upload-supabase",
