@@ -29,6 +29,27 @@ module.exports = ({ env }) => ({
       allowedFields: ["id", "string"],
     },
   },
+  "preview-button": {
+    enabled: true,
+    config: {
+      contentTypes: [
+        {
+          uid: "api::event.event",
+          targetField: "slug",
+          published: {
+            basePath: "events",
+          },
+        },
+        {
+          uid: "api::post.post",
+          targetField: "slug",
+          published: {
+            basePath: "blog",
+          },
+        },
+      ],
+    },
+  },
   upload: {
     config: {
       provider: "strapi-provider-upload-supabase",
