@@ -3,7 +3,7 @@ module.exports = ({ env }) => ({
   //   enabled: true,
   // },
   slugify: {
-    enabled: true,
+    enabled: false, // Pausing until this is resolved: https://github.com/ComfortablyCoding/strapi-plugin-slugify/issues/58
     config: {
       contentTypes: {
         post: {
