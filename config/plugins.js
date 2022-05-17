@@ -2,6 +2,26 @@ module.exports = ({ env }) => ({
   // seo: {
   //   enabled: true,
   // },
+  slugify: {
+    enabled: true,
+    config: {
+      contentTypes: {
+        post: {
+          field: "slug",
+          references: "title",
+        },
+        event: {
+          field: "slug",
+          references: "title",
+        },
+      },
+      slugifyOptions: {
+        lower: true,
+        strict: true,
+      },
+      slugifyWithCount: true,
+    },
+  },
   sitemap: {
     enabled: true,
     config: {
