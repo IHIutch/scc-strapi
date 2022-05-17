@@ -9552,6 +9552,13 @@ strapi-plugin-sitemap@^2.0.7:
     sitemap "^7.1.0"
     xml2js "^0.4.23"
 
+strapi-plugin-slugify@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-slugify/-/strapi-plugin-slugify-2.2.2.tgz#55f5bd603eea3d4f758a8c654b9e04d3ba89fc91"
+  integrity sha512-Kra7uXZUM+70m02Qoa/su+HxBxqrFhxyLt/B90kd4LwnEjebXA6nsAsa0dxafMunQfqWQey7JOV+qToB4a3FXg==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+
 "strapi-provider-upload-supabase@file:providers/strapi-provider-upload-supabase":
   version "1.0.0"
   dependencies:
