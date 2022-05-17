@@ -4,8 +4,21 @@ const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
 
 const getKey = ({ directory, file }) => {
-  const name = file.name.split(".").shift();
-  return `${directory}/${name}-${file.hash}${file.ext}`.replace(/^\//g, "");
+  // const name = file.name.split(".").shift();
+  const path = file.path ? `${file.path}/` : "";
+  return `${directory}/${path}${file.hash}${file.ext}`;
+};
+
+const getPublicURL = (path) => {
+  try {
+    const { publicURL, error } = supabase.storage
+      .from("public")
+      .getPublicUrl(path);
+    if (error) throw error;
+    return publicURL;
+  } catch (err) {
+    console.log("Error downloading file: ", err.message);
+  }
 };
 
 module.exports = {
@@ -17,55 +30,95 @@ module.exports = {
       ""
     );
     const options = config.options || undefined;
-
     const supabase = createClient(apiUrl, apiKey, options);
 
-    return {
-      upload: (file, customParams = {}) =>
-        new Promise((resolve, reject) => {
-          //--- Compute the file key.
-          file.hash = crypto.createHash("md5").update(file.hash).digest("hex");
-          //--- Upload the file into storage
-          supabase.storage
-            .from(bucket)
-            .upload(
-              getKey({ directory, file }),
-              // file, // or Buffer.from(file.buffer, "binary"),
-              Buffer.from(file.buffer, "binary"), // or file
-              {
-                cacheControl: "public, max-age=31536000, immutable",
-                upsert: true,
-                contentType: file.mime,
-              }
-            )
-            .then(({ data, error: error1 }) => {
-              if (error1) {
-                console.error(error1);
-                return reject(error1);
-              }
-              const { publicURL, error: error2 } = supabase.storage
-                .from(bucket)
-                .getPublicUrl(getKey({ directory, file }));
-              if (error2) {
-                console.error(error2);
-                return reject(error2);
-              }
-              file.url = publicURL;
-              resolve();
-            });
-        }),
+    const upload = async (file, customParams = {}) => {
+      try {
+        // upload file on S3 bucket
+        const path = file.path ? `${file.path}/` : "";
+        const filePath = `${directory}/${path}${file.hash}${file.ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("public")
+          .upload(filePath, file.stream || Buffer.from(file.buffer, "binary"), {
+            cacheControl: "public, max-age=31536000, immutable",
+            upsert: true,
+            contentType: file.mime,
+            ...customParams,
+          });
+        if (uploadError) throw uploadError;
 
-      delete: (file, customParams = {}) =>
-        new Promise((resolve, reject) => {
-          //--- Delete the file fromstorage the space
-          supabase.storage
+        const { publicURL, error: getPublicUrlError } = supabase.storage
+          .from("public")
+          .getPublicUrl(filePath);
+        if (getPublicUrlError) throw getPublicUrlError;
+
+        file.url = publicURL;
+        console.debug(`File ${filePath} successfully uploaded to ${file.url}`);
+      } catch (error) {
+        console.error(`Upload media error: ${error.message}`);
+      }
+    };
+
+    // S3.upload(
+    //   {
+    //     Key: `${path}${file.hash}${file.ext}`,
+    //     Body: file.stream || Buffer.from(file.buffer, "binary"),
+    //     ACL: "public-read",
+    //     ContentType: file.mime,
+    //     ...customParams,
+    //   },
+    //   (err, data) => {
+    //     if (err) {
+    //       return reject(err);
+    //     }
+
+    //     // set the bucket file url
+    //     file.url = data.Location;
+
+    //     resolve();
+    //   }
+    // );
+
+    return {
+      async uploadStream(file, customParams = {}) {
+        return upload(file, customParams);
+      },
+      async upload(file, customParams = {}) {
+        return upload(file, customParams);
+      },
+      async delete(file) {
+        try {
+          // Delete the file from storage the space
+          const path = file.path ? `${file.path}/` : "";
+          const filePath = `${directory}/${path}${file.hash}${file.ext}`;
+
+          const { error: deleteError } = await supabase.storage
             .from(bucket)
-            .remove([getKey({ directory, file })])
-            .then(({ data, error }) => {
-              if (error) return reject(error);
-              resolve();
-            });
-        }),
+            .remove([filePath]);
+
+          if (deleteError) throw deleteError;
+          console.debug(`File ${filePath} successfully deleted`);
+        } catch (error) {
+          console.error(`Delete media error: ${error.message}`);
+        }
+        // return new Promise((resolve, reject) => {
+        //   // delete file on S3 bucket
+        //   const path = file.path ? `${file.path}/` : "";
+        //   S3.deleteObject(
+        //     {
+        //       Key: `${path}${file.hash}${file.ext}`,
+        //       ...customParams,
+        //     },
+        //     (err, data) => {
+        //       if (err) {
+        //         return reject(err);
+        //       }
+
+        //       resolve();
+        //     }
+        //   );
+        // });
+      },
     };
   },
 };
