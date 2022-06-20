@@ -39,12 +39,22 @@ module.exports = ({ env }) => ({
           published: {
             basePath: "events",
           },
+          draft: {
+            query: {
+              type: "event",
+            },
+          },
         },
         {
           uid: "api::post.post",
           targetField: "slug",
           published: {
             basePath: "blog",
+          },
+          draft: {
+            query: {
+              type: "blog",
+            },
           },
         },
       ],
