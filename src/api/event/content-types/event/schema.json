@@ -41,6 +41,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "location": {
+      "displayName": "location",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.location"
     }
   }
 }

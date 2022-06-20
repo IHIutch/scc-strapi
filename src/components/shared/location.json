@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_locations",
+  "info": {
+    "displayName": "location",
+    "icon": "map-pin",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "streetAddress": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "googleMapsUrl": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}
