@@ -41,7 +41,7 @@ module.exports = ({ env }) => ({
           },
           draft: {
             query: {
-              type: "event",
+              postTypePath: "events",
             },
           },
         },
@@ -53,7 +53,7 @@ module.exports = ({ env }) => ({
           },
           draft: {
             query: {
-              type: "blog",
+              postTypePath: "blog",
             },
           },
         },
