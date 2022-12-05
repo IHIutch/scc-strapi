@@ -1,20 +1,13 @@
-const parse = require("pg-connection-string").parse;
-const config = parse(process.env.SUPABASE_DATABASE_URL);
-
-module.exports = () => {
-  return {
+module.exports = ({ env }) => ({
+  connection: {
+    client: 'postgres',
     connection: {
-      client: "postgres",
-      connection: {
-        host: config.host || "localhost",
-        port: config.port || 5432,
-        database: config.database || "strapi",
-        user: config.user || "strapi",
-        password: config.password || "strapi",
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
+      host: env('PGHOST', '127.0.0.1'),
+      port: env.int('PGPORT', 5432),
+      database: env('PGDATABASE', 'strapi'),
+      user: env('PGUSER', 'strapi'),
+      password: env('PGPASSWORD', 'password'),
+      ssl: env.bool(true),
     },
-  };
-};
+  },
+});

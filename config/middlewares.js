@@ -1,26 +1,25 @@
-module.exports = ({ env }) => [
-  "strapi::errors",
+module.exports = [
+  'strapi::errors',
   {
-    name: "strapi::security", // This might be a temporary solution https://github.com/strapi/strapi/issues/11637#issuecomment-977244572
+    name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
-          "script-src": ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
-          "img-src": [
-            "'self'",
-            "data:",
-            "strapi.io",
-            `${env("SUPABASE_API_URL")}`,
-          ],
+          'connect-src': ["'self'", 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          upgradeInsecureRequests: null,
         },
       },
     },
   },
-  "strapi::cors",
-  "strapi::poweredBy",
-  "strapi::logger",
-  "strapi::query",
-  "strapi::body",
-  "strapi::favicon",
-  "strapi::public",
+  'strapi::cors',
+  'strapi::poweredBy',
+  'strapi::logger',
+  'strapi::query',
+  'strapi::body',
+  'strapi::session',
+  'strapi::favicon',
+  'strapi::public',
 ];

@@ -1,25 +1,7 @@
 module.exports = ({ env }) => ({
-  // seo: {
-  //   enabled: true,
-  // },
-  slugify: {
-    enabled: false, // Pausing until this is resolved: https://github.com/ComfortablyCoding/strapi-plugin-slugify/issues/58
+  "users-permissions": {
     config: {
-      contentTypes: {
-        post: {
-          field: "slug",
-          references: "title",
-        },
-        event: {
-          field: "slug",
-          references: "title",
-        },
-      },
-      slugifyOptions: {
-        lower: true,
-        strict: true,
-      },
-      slugifyWithCount: true,
+      jwtSecret: env("JWT_SECRET"),
     },
   },
   sitemap: {
@@ -62,13 +44,15 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: "strapi-provider-upload-supabase",
+      provider: "cloudinary",
       providerOptions: {
-        apiUrl: env("SUPABASE_API_URL"),
-        apiKey: env("SUPABASE_API_KEY"),
-        bucket: env("SUPABASE_BUCKET"),
-        directory: env("SUPABASE_DIRECTORY", "uploads"),
-        options: {},
+        cloud_name: env("CLOUDINARY_NAME"),
+        api_key: env("CLOUDINARY_KEY"),
+        api_secret: env("CLOUDINARY_SECRET"),
+      },
+      actionOptions: {
+        upload: {},
+        delete: {},
       },
     },
   },

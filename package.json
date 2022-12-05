@@ -1,5 +1,5 @@
 {
-  "name": "strapiv-4",
+  "name": "strapi",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -11,23 +11,21 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.1.7",
-    "@strapi/plugin-users-permissions": "^4.1.7",
-    "@strapi/strapi": "^4.1.7",
-    "pg": "^8.7.1",
-    "pg-connection-string": "^2.5.0",
-    "redaxios": "^0.5.0",
+    "@strapi/plugin-i18n": "4.1.9",
+    "@strapi/plugin-users-permissions": "4.1.9",
+    "@strapi/provider-upload-cloudinary": "4.1.9",
+    "@strapi/strapi": "4.1.9",
+    "pg": "8.7.3",
+    "redaxios": "^0.5.1",
     "slugify": "^1.6.5",
-    "strapi-plugin-preview-button": "^0.3.1",
-    "strapi-plugin-sitemap": "^2.0.7",
-    "strapi-plugin-slugify": "^2.2.2",
-    "strapi-provider-upload-supabase": "file:providers/strapi-provider-upload-supabase"
+    "strapi-plugin-preview-button": "^1.0.0",
+    "strapi-plugin-sitemap": "^2.0.8"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "cbc14233-8890-40f0-be3c-6196a0894b7a"
+    "uuid": "35d7a084-3088-4d0b-869e-f503693ee8e5"
   },
   "engines": {
     "node": ">=12.x.x <=16.x.x",
