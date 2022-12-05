@@ -31,6 +31,7 @@ module.exports = ({ env }) => {
               query: {
                 type: "event",
                 slug: "{slug}",
+                secret: process.env.STRAPI_PREVIEW_SECRET,
               },
             },
           },
@@ -44,6 +45,7 @@ module.exports = ({ env }) => {
               query: {
                 type: "post",
                 slug: "{slug}",
+                secret: process.env.STRAPI_PREVIEW_SECRET,
               },
             },
           },
