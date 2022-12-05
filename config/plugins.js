@@ -19,11 +19,13 @@ module.exports = ({ env }) => ({
           uid: "api::event.event",
           targetField: "slug",
           published: {
-            basePath: "events",
+            url: process.env.STRAPI_PREVIEW_PUBLISHED_URL + "/events/{slug}",
           },
           draft: {
+            url: process.env.STRAPI_PREVIEW_DRAFT_URL,
             query: {
-              postTypePath: "events",
+              type: "event",
+              slug: "{slug}",
             },
           },
         },
@@ -31,11 +33,13 @@ module.exports = ({ env }) => ({
           uid: "api::post.post",
           targetField: "slug",
           published: {
-            basePath: "blog",
+            url: process.env.STRAPI_PREVIEW_PUBLISHED_URL + "/blog/{slug}",
           },
           draft: {
+            url: process.env.STRAPI_PREVIEW_DRAFT_URL,
             query: {
-              postTypePath: "blog",
+              type: "post",
+              slug: "{slug}",
             },
           },
         },
