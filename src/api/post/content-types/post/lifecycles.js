@@ -1,10 +1,10 @@
 const slugify = require("slugify");
 
 const handleSlugify = (value) => {
-  slugify(value, {
+  slugify.extend({ "|": "" }); // Remove all instances of '|'
+  return slugify(value, {
     lower: true,
     strict: true,
-    remove: /[*+~.()'"!:@|]/g,
   });
 };
 
